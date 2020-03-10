@@ -7,10 +7,10 @@ O objetivo (ao menos inicial) do projeto é providenciar através de uma aplica�
     - y
 
 ** Links recomendados
-   - [[aa][Simulações de estrututras da USFCA https://www.cs.usfca.edu/~galles/visualization/Algorithms.html]]
-   - [[Vi][Visualização mais agradável de algumas dessas estruturas https://visualgo.net/en]]
+   - [[https://www.cs.usfca.edu/~galles/visualization/Algorithms.html][Visualização de estrutura de dados (USFCA)]]
+   - [[https://visualgo.net/en][VISUALGO: Visualização mais agradável de algumas estruturas]]
 
-*** Processo de desenvolvimento [0/4]
+*** Processo de desenvolvimento [0/7]
     - [ ] Definir quais estruturas
     - [ ] Estudo das estruturas escolhidas
     - [ ] Escolha dos recursos visuais (Como serão mostradas as estruturas)
