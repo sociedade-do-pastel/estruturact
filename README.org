@@ -1,0 +1,20 @@
+* Estruturact: Um simulador de estruturas de dados, mas /mobile/
+** O que é?
+O objetivo (ao menos inicial) do projeto é providenciar através de uma aplicação React, uma simulação visual de algumas (2) estruturasa de dados.
+
+*** As escolhidas
+    - x
+    - y
+
+** Links recomendados
+   - [[aa][Simulações de estrututras da USFCA https://www.cs.usfca.edu/~galles/visualization/Algorithms.html]]
+   - [[Vi][Visualização mais agradável de algumas dessas estruturas https://visualgo.net/en]]
+
+*** Processo de desenvolvimento [0/4]
+    - [ ] Definir quais estruturas
+    - [ ] Estudo das estruturas escolhidas
+    - [ ] Escolha dos recursos visuais (Como serão mostradas as estruturas)
+    - [ ] /Look and Feel/ ou estilo da aplicação definidos
+    - [ ] Desenvolvimento do /front-end/
+    - [ ] Criação de exemplos visuais 
+    - [ ] Definição dos extras
