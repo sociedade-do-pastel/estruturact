@@ -6,7 +6,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-import HashScreen from './HashScreen';
+import HashScreen from './screens/HashScreen';
+import HeapScreen from './screens/HeapScreen';
 import Wrapper from './Wrapper';
 import {WhiteTheme, BlackTheme} from './theme';
 
@@ -15,7 +16,7 @@ const Stack = createStackNavigator();
 export default class App extends React.Component {
 	constructor(props){
 		super(props);
-		this.state = {scheme : "dark"};
+		this.state = {scheme : "white"};
 		this.changeTheme = this.changeTheme.bind(this);
 	}
 
@@ -35,6 +36,7 @@ export default class App extends React.Component {
 					: <Icon.Button name="palette" size={20} onPress={this.changeTheme} color='#ffffff' backgroundColor="#17181a"/>
 			)}}/>
 				<Stack.Screen name="Hash" component={HashScreen}/>
+				<Stack.Screen name="Heap" component={HeapScreen}/>
 				
 			    </Stack.Navigator>
 			</NavigationContainer>

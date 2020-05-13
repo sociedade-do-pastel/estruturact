@@ -16,6 +16,10 @@ export default class HomeScreen extends React.Component {
 			title="Hash"
 			onPress={() => this.props.navigation.navigate('Hash')}
 				/>
+				<Button
+			title="Heap"
+			onPress={() => this.props.navigation.navigate('Heap')}
+				/>
 				</View>
 		);
 	}
