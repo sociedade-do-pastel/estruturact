@@ -17,6 +17,7 @@
     "@react-navigation/stack": "^5.2.13",
     "react": "16.11.0",
     "react-native": "0.62.2",
+    "react-native-dialog-input": "^1.0.7",
     "react-native-elements": "^2.0.0",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-material-cards": "^1.0.15",

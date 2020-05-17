@@ -4,13 +4,17 @@ import {
 } from 'react-native';
 
 import SimulationView from '../SimulationView';
-import SimulationScreen from './SimulationScreen';
 
-export default class HeapScreen extends SimulationScreen {
+export default class HeapScreen extends React.Component {
 	render(){
 		return(
-				<SimulationView>
-				</SimulationView>
+			<SimulationView
+			  editable={true}
+			  insertOp={(x) => console.log(x)}
+			  removeOp={(x) => console.log(x)}
+			  searchOp={(x) => console.log(x)}
+			>
+			</SimulationView>
 		);
 	}
 }
