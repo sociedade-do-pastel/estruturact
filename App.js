@@ -2,14 +2,13 @@ import 'react-native-gesture-handler';
 import React from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
-
 import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import HashScreen from './screens/HashScreen';
 import HeapScreen from './screens/HeapScreen';
 import Wrapper from './Wrapper';
-import {WhiteTheme, BlackTheme} from './theme';
+import {WhiteTheme, BlackTheme} from './Theme';
 
 const Stack = createStackNavigator();
 

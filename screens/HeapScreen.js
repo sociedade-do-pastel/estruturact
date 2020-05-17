@@ -1,16 +1,16 @@
 import React from 'react';
 import {
-	View,
-	Button,
 	Text
 } from 'react-native';
 
-export default class HashScreen extends React.Component {
+import SimulationView from '../SimulationView';
+import SimulationScreen from './SimulationScreen';
+
+export default class HeapScreen extends SimulationScreen {
 	render(){
 		return(
-				<View>
-
-			</View>
+				<SimulationView>
+				</SimulationView>
 		);
 	}
 }

@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import HomeScreen from './screens/HomeScreen';
 import AboutUsScreen from './screens/AboutUsScreen';
+import {Style} from './Theme';
 
 const Tab = createMaterialBottomTabNavigator();
 const estruturasIcon = <Icon name="dice" size={20} color='#ffffff'/>;
@@ -23,8 +24,8 @@ export default class Wrapper extends React.Component {
 						return aboutUsIcon;
 				}})}>
 				
-				<Tab.Screen name="Estruturas" component={HomeScreen} options={{tabBarColor: '#6a5acd'}}/>
-				<Tab.Screen name="Sobre nós" component={AboutUsScreen} options={{tabBarColor: '#ff557f'}}/>
+				<Tab.Screen name="Estruturas" component={HomeScreen} options={{tabBarColor: Style.homeScreenAccentColor.color}}/>
+				<Tab.Screen name="Sobre nós" component={AboutUsScreen} options={{tabBarColor: Style.aboutUsScreenAccentColor.color}}/>
 				
 			    </Tab.Navigator>
 		);
