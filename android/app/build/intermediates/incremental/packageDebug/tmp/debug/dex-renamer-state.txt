@@ -1,4 +1,4 @@
-#Thu Apr 23 23:08:08 BRT 2020
+#Fri Apr 24 12:56:15 BRT 2020
 base.0=/home/guior/estruturact/android/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
