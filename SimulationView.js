@@ -27,7 +27,7 @@ export default class SimulationView extends React.Component {
 		const { selectedIndex } = this.state;
 
 		return(
-			<View style={{flex:1}}>
+			<View style={{flex:1, backgroundColor: '#e3e4e9'}}>
 				
 			{this.props.children}
 			

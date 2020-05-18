@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, Linking,	FlatList} from 'react-native';
 import {Card, CardTitle, CardAction, CardButton} from 'react-native-material-cards';
-import {Style} from '../Theme';
+import {ThemeContext, Style} from '../Theme';
 
 const conteudo= [
 	{id: 0, imgSrc: require('../images/felipe.jpeg'), name: 'Felipe Maciel de Sousa', ra: '22.218.042-4', github: 'uniefelsousa'},
@@ -12,21 +12,26 @@ const conteudo= [
 export default class AboutUsScreen extends React.Component {
 	render(){
 		return(
-			<FlatList
+				<ThemeContext.Consumer>
+				{({theme, toggleTheme}) => (
+								<FlatList
 			  data={conteudo}
-			  renderItem={({ item }) =>
-						<Card>
+			  renderItem={({ item }) =>  
+						<Card
+							isDark={theme.dark}>
 						<Image
 						  style={Style.images}
 						  source={item.imgSrc}
 						/>		
 						<CardTitle
+						  style={{backgroundColor: theme.colors.card}}
 						  title={item.name}
 						  subtitle={`RA: ${item.ra}`}
 						/>
 						<CardAction 
 						  separator={true} 
-						  inColumn={false}>
+						  inColumn={false}
+						  style={{backgroundColor: theme.colors.card}}>
 						<CardButton
 						  onPress={() => {Linking.openURL(`https://github.com/${item.github}`)}}
 						  title="GitHub"
@@ -37,6 +42,8 @@ export default class AboutUsScreen extends React.Component {
 					   }
 			  keyExtractor={item => item.id}
 			/>
+				)}
+		    </ThemeContext.Consumer>	
 		);
 	}
 }

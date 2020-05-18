@@ -30,7 +30,7 @@ export default class HashScreen extends React.Component {
 
 		if(this.state.editable === false){
 			return(
-					<View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+					<View style={{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#e3e4e9'}}>
 					<Text>Clique em novo para inserir o tamanho</Text>
 					{menu}
 				</View>
@@ -38,13 +38,12 @@ export default class HashScreen extends React.Component {
 		}
 		else{
 			return(
-					<SimulationView
+				<SimulationView
 				insertOp={(x) => console.log(x)}
 				removeOp={(x) => console.log(x)}
-				searchOp={(x) => console.log(x)}
-					>
+				searchOp={(x) => console.log(x)}>
  
-					{menu}					
+				{menu}					
 				</SimulationView>
 			);
 		}

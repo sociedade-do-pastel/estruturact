@@ -1,44 +1,56 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 
+import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import HashScreen from './screens/HashScreen';
 import HeapScreen from './screens/HeapScreen';
 import Wrapper from './Wrapper';
-import {WhiteTheme, BlackTheme} from './Theme';
+import ThemeButton from './ThemeButton';
+import { ThemeContext, themes } from './Theme';
 
 const Stack = createStackNavigator();
 
 export default class App extends React.Component {
 	constructor(props){
 		super(props);
-		this.state = {scheme : "white"};
-		this.changeTheme = this.changeTheme.bind(this);
+
+		this.toggleTheme = () => {
+			this.setState(state => ({
+				theme:
+				state.theme === themes.black
+					? themes.white
+					: themes.black,
+			}));
+		};
+
+		this.state = {
+			theme: themes.white,
+			toggleTheme: this.toggleTheme,
+		};
 	}
 
-	changeTheme(){
-		this.state.scheme === 'white' ? this.setState({scheme : 'dark'}) : this.setState({scheme : 'white'});		
-	}
-	
 	render(){
 		return(
-				<NavigationContainer theme={this.state.scheme === 'dark' ? BlackTheme : WhiteTheme}>
+				<ThemeContext.Provider value={this.state}>
+
+				<StatusBar backgroundColor={this.state.theme.statusBar}/>
+			
+				<NavigationContainer theme={this.state.theme}>
 				<Stack.Navigator>
 
 				<Stack.Screen name="Estruturact" component={Wrapper}
-			options={{headerRight: () =>  (
-				this.state.scheme === 'white' ?
-					<Icon.Button name="palette" size={20} onPress={this.changeTheme} color='#000000' backgroundColor="#ffffff"/>
-					: <Icon.Button name="palette" size={20} onPress={this.changeTheme} color='#ffffff' backgroundColor="#17181a"/>
-			)}}/>
+			      options={{headerRight: () =>  (
+				    <ThemeButton/>
+			      )}}/>
 				<Stack.Screen name="Hash" component={HashScreen}/>
 				<Stack.Screen name="Heap" component={HeapScreen}/>
 				
 			    </Stack.Navigator>
-			</NavigationContainer>
+				</NavigationContainer>
+				</ThemeContext.Provider>
 		);
 	}
 }
