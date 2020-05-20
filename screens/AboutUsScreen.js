@@ -1,7 +1,7 @@
 import React from 'react';
-import {Image, Linking,	FlatList} from 'react-native';
-import {Card, CardTitle, CardAction, CardButton} from 'react-native-material-cards';
-import {ThemeContext, Style} from '../Theme';
+import { Image, Linking,	FlatList } from 'react-native';
+import { Card, CardTitle, CardAction, CardButton } from 'react-native-material-cards';
+import { ThemeContext, Style } from '../components/Theme';
 
 const conteudo= [
 	{id: 0, imgSrc: require('../images/felipe.jpeg'), name: 'Felipe Maciel de Sousa', ra: '22.218.042-4', github: 'uniefelsousa'},
@@ -31,7 +31,7 @@ export default class AboutUsScreen extends React.Component {
 						<CardAction 
 						  separator={true} 
 						  inColumn={false}
-						  style={{backgroundColor: theme.colors.card}}>
+						  style={{backgroundColor: theme.colors.card, borderTopWidth: 1}}>
 						<CardButton
 						  onPress={() => {Linking.openURL(`https://github.com/${item.github}`)}}
 						  title="GitHub"

@@ -1,37 +1,37 @@
 import React from 'react';
-import {
-	View,
-	Text
-} from 'react-native';
+import { View, Text } from 'react-native';
 
-import SimulationView from '../SimulationView';
-import DialogInput from 'react-native-dialog-input';
+import SimulationView from '../components/SimulationView';
+import DialogHash from '../components/DialogHash';
+import { Style } from '../components/Theme';
 
 export default class HashScreen extends React.Component {
 	constructor(props){
 		super(props);
-		this.state={editable: false, isDialogVisible: false};
+		this.state={editable: false};
 		this.props.navigation.setOptions({
 			headerRight: () => (
-					<Text onPress={()=>this.setState({isDialogVisible: true})} style={{color: '#2089dc', padding: 10}}>Novo</Text>
+					<Text onPress={this.showDialog} style={Style.hashHeaderButton}>Novo</Text>
 			),
 		});
+
+		this.showDialog = this.showDialog.bind(this);
 	}
+
+	showDialog(){ this.setState({isDialogVisible: true}); }
 	
 	render(){
-		const menu = <DialogInput isDialogVisible={this.state.isDialogVisible}
-		  title={"Iniciar nova Hash"}
-		  message={"Insira o tamanho da estrutura"}
-		  hintInput ={"Tamanho da estrutura"}
-		  submitInput={(inputText) => this.setState({tamanho: inputText, editable: true, isDialogVisible: false})}
-		  closeDialog={() => this.setState({isDialogVisible: false})}>
-		  textInputProps={{keyboardType: 'number-pad'}}
-		</DialogInput>
-
+		const menu =
+			  <DialogHash
+		        visible={this.state.isDialogVisible}
+		        onConfirm={(value)=>this.setState({tamanho: value, editable: true, isDialogVisible: false})}
+		        onCancel={()=>this.setState({isDialogVisible: false})}
+			  />
+			
 		if(this.state.editable === false){
 			return(
-					<View style={{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#e3e4e9'}}>
-					<Text>Clique em novo para inserir o tamanho</Text>
+				<View style={Style.preHashScreen}>
+					<Text onPress={this.showDialog}>Clique em novo para inserir o tamanho</Text>
 					{menu}
 				</View>
 			);

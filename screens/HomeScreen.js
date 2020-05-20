@@ -29,7 +29,7 @@ export default class HomeScreen extends React.Component {
 						  <CardAction 
 								separator={true} 
 								inColumn={false}
-								style={{backgroundColor: theme.colors.card}}>
+								style={{backgroundColor: theme.colors.card, borderTopWidth: 1}}>
 						  <CardButton
 						  onPress={() => this.props.navigation.navigate(item.name)}
 						  title="Simulação"
