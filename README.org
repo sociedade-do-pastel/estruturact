@@ -5,20 +5,20 @@ React, uma simulação visual de algumas (2) estruturasa de dados.
 
 *** As escolhidas
     - Hash
-    - Heap ou AVL (Será estudado)
+    - Heap
 
 ** Links recomendados
    - [[https://www.cs.usfca.edu/~galles/visualization/Algorithms.html][Visualização de estrutura de dados (USFCA)]]
    - [[https://visualgo.net/en][VISUALGO: Visualização mais agradável de algumas estruturas]]
 
-*** Processo de desenvolvimento [1/7]
+*** Processo de desenvolvimento [4/7]
     - [X] Definir quais estruturas
-    - [ ] Estudo das estruturas escolhidas
-    - [ ] Escolha dos recursos visuais (Como serão mostradas as estruturas)
-    - [ ] /Look and Feel/ ou estilo da aplicação definidos
-    - [ ] Desenvolvimento do /front-end/
-    - [ ] Criação de exemplos visuais 
-    - [ ] Definição dos extras
+    - [X] Estudo das estruturas escolhidas
+    - [X] /Look and Feel/
+    - [X] Página /Sobre nós/
+    - [ ] Implementação da Hash
+    - [ ] Implementação da Heap
+    - [ ] Artes da /home screen/
 
 *** Ambiente de desenvolvimento
     - React native cli
@@ -26,7 +26,7 @@ React, uma simulação visual de algumas (2) estruturasa de dados.
 React native cli escolhido como ambiente de desenvolvimento.
 
 *** As tarefas individuais
-    - Guilherme: Visual e /look and feel/
-    - Felipe: ?
-    - Leon: ?
+    - Guilherme: /Look and feel/
+    - Felipe: Hash
+    - Leon: Heap
       
