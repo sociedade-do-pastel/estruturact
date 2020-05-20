@@ -29,6 +29,7 @@ export const themes = {
 }
 
 const simulationsAccent = '#2089dc';
+const simulationBackground = '#e3e4e9';
 
 export const Style = StyleSheet.create({
 	images: {
@@ -53,7 +54,7 @@ export const Style = StyleSheet.create({
 	},
 	simulationView: {
 		flex:1,
-		backgroundColor: '#e3e4e9'
+		backgroundColor: simulationBackground
 	},
 	simulationViewButtonGroup: {
 		flex: 1,
@@ -78,6 +79,42 @@ export const Style = StyleSheet.create({
 	hashHeaderButton: {
 		padding: 15,
 		color: simulationsAccent
+	},
+	hashHead: {
+		height: 40,
+		backgroundColor: '#4169E1',
+		marginTop: 10
+	},
+	hashText: {
+		margin: 6,
+		textAlign:'center',
+		color:'white'
+	},
+	hashRow: {
+		flexDirection: 'row',
+		paddingTop:'1%'
+	},
+	hashEmpty: {
+		height: 40,
+		width:60,
+		backgroundColor: simulationBackground
+	},
+	hashFull: {
+		height: 40,
+		width:60,
+		backgroundColor:'#00BFFF'
+	},
+	hashDataWrapper: {
+		marginTop: -1
+	},
+	hashOuterTable: {
+		borderWidth: 4,
+		borderColor: simulationBackground,
+		paddingTop:'10%'
+	},
+	hashInnerTable: {
+		borderWidth: 3,
+		borderColor: simulationBackground
 	}
 });
 
