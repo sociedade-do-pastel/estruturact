@@ -3,7 +3,7 @@ import {
     Text,
     Button
 } from 'react-native';
-import SimulationView from '../SimulationView';
+import SimulationView from '../components/SimulationView';
 import ArrayProvider from '../structures/heap/array_provider.js';
 import {ArrayContext} from '../structures/heap/array_provider.js';
 import Listinha from  '../structures/heap/listinha.js';

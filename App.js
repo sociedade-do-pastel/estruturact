@@ -9,8 +9,8 @@ import AsyncStorage from '@react-native-community/async-storage';
 import HashScreen from './screens/HashScreen';
 import HeapScreen from './screens/HeapScreen';
 import Wrapper from './Wrapper';
-import ThemeButton from './ThemeButton';
-import { ThemeContext, themes } from './Theme';
+import ThemeButton from './components/ThemeButton';
+import { ThemeContext, themes } from './components/Theme';
 
 const Stack = createStackNavigator();
 

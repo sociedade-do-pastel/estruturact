@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import HomeScreen from './screens/HomeScreen';
 import AboutUsScreen from './screens/AboutUsScreen';
-import {Style} from './Theme';
+import {Style} from './components/Theme';
 
 const Tab = createMaterialBottomTabNavigator();
 const estruturasIcon = <Icon name="dice" size={20} color='#ffffff'/>;

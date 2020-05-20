@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, FlatList} from 'react-native';
 import {Card, CardTitle, CardAction, CardButton} from 'react-native-material-cards';
-import {ThemeContext, Style} from '../Theme';
+import {ThemeContext, Style} from '../components/Theme';
 
 const conteudo= [
 	{id: 0, imgSrc: require('../images/harold.jpg'), name: 'Hash'},

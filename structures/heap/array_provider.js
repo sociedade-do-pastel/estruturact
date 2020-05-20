@@ -46,7 +46,6 @@ export default class ArrayProvider extends React.Component
 		 j >= 0;
 		 j--)
 	    {
-		console.log(j);
 		if (vetor[j].valor == num)
 		    return j;
 	    }
@@ -94,7 +93,7 @@ export default class ArrayProvider extends React.Component
 	    		    ),
 	    		};
 
-	    	    }, console.log(this.state.bin_heap));
+	    	    });
 	};
 	    
     render ()
