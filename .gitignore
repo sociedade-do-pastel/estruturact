@@ -1,2 +1,5 @@
-node_modules/
-ios/
+node_modules
+ios
+.nvm
+*.log
+package-lock.json
