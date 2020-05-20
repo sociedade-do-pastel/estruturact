@@ -1,6 +1,7 @@
 import React from 'react';
 import {
-	Text
+    Text,
+    Button
 } from 'react-native';
 
 import SimulationView from '../SimulationView';
@@ -33,6 +34,8 @@ export default class HeapScreen extends React.Component {
 					  <Text>Valores que introduzistes</Text>
 					      <Listinha lista={tela_heap.vetor_apresentado}></Listinha>
 						  <Text>{tela_heap.is_arvore ? "É árvore completa":  "Não é árvore completa"}</Text>
+						      <Button onPress={tela_heap.construir} title="Construir heap!"/>
+							  <Listinha lista={tela_heap.heap}></Listinha>
 			    </SimulationView>
 			}
 	      </ArrayContext.Consumer>
