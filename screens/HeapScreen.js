@@ -27,7 +27,7 @@ export default class HeapScreen extends React.Component {
 					  }
 					  searchOp={
 					      valor_procurar =>
-						  tela_heap.procurar (valor_procurar)
+						  tela_heap.popHeap ()
 					  }
 					  >
 					  <Text>Valores que introduzistes</Text>
