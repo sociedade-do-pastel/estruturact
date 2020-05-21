@@ -30,7 +30,10 @@ export default class SimulationView extends React.Component {
 
 		return(
 			<View style={Style.simulationView}>
+				
+			<View style={Style.simulationContent}>
 			{this.props.children}
+			</View>
 
 			<View style={Style.simulationViewButtonGroup}>
 			<ButtonGroup
