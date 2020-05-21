@@ -4,8 +4,8 @@ import {Card, CardTitle, CardAction, CardButton} from 'react-native-material-car
 import {ThemeContext, Style} from '../components/Theme';
 
 const conteudo= [
-	{id: 0, imgSrc: require('../images/harold.jpg'), name: 'Hash'},
-	{id: 1, imgSrc: require('../images/harold2.jpg'), name: 'Heap'}
+	{id: 0, imgSrc: require('../images/hashBanner.png'), name: 'Hash'},
+	{id: 1, imgSrc: require('../images/heapBanner.png'), name: 'Heap'}
 ];
 
 export default class HomeScreen extends React.Component {
@@ -19,8 +19,8 @@ export default class HomeScreen extends React.Component {
 						  <Card
 							isDark={theme.dark}>
 						  <Image
-						  style={Style.images}
-						  source={item.imgSrc} 
+								style={[Style.homeScreenImages, {backgroundColor: theme.colors.card}]}
+								source={item.imgSrc} 
 						  />
 						  <CardTitle
 								style={{backgroundColor: theme.colors.card}}

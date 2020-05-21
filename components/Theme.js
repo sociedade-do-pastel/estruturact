@@ -31,11 +31,21 @@ export const themes = {
 const simulationsAccent = '#2089dc';
 const simulationBackground = '#e3e4e9';
 
+export const ThemeContext = React.createContext({
+	theme: themes.white,
+	toggleTheme: () => {},
+});
+
 export const Style = StyleSheet.create({
-	images: {
+	homeScreenImages: {
+		flex: 1,
+		resizeMode: 'contain',
+		width: windowWidth,
+	},	
+	aboutUsScreenImages: {
 		flex: 1,
 		resizeMode: 'cover',
-		width: windowWidth
+		width: windowWidth,
 	},
 	aboutUsScreenAccentColor: {
 		color: "#ff8172"
@@ -56,12 +66,16 @@ export const Style = StyleSheet.create({
 		flex:1,
 		backgroundColor: simulationBackground
 	},
-	simulationViewButtonGroup: {
+	simulationContent: {
 		flex: 1,
+		flexGrow: 5
+	},
+	simulationViewButtonGroup: {
 		justifyContent: 'flex-end',
 		marginTop: 10,
 		borderTopLeftRadius: 5,
-		borderTopRightRadius: 5
+		borderTopRightRadius: 5,
+		backgroundColor: 'white'
 	},
 	simulationViewTextInput: {
 		flex: 1,
@@ -82,7 +96,7 @@ export const Style = StyleSheet.create({
 	},
 	hashHead: {
 		height: 40,
-		backgroundColor: '#4169E1',
+		backgroundColor: '#64615a',
 		marginTop: 10
 	},
 	hashText: {
@@ -102,7 +116,7 @@ export const Style = StyleSheet.create({
 	hashFull: {
 		height: 40,
 		width:60,
-		backgroundColor:'#00BFFF'
+		backgroundColor: simulationsAccent,
 	},
 	hashDataWrapper: {
 		marginTop: -1
@@ -116,9 +130,4 @@ export const Style = StyleSheet.create({
 		borderWidth: 3,
 		borderColor: simulationBackground
 	}
-});
-
-export const ThemeContext = React.createContext({
-	theme: themes.white,
-	toggleTheme: () => {},
 });

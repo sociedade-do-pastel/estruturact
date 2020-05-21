@@ -20,7 +20,7 @@ export default class AboutUsScreen extends React.Component {
 						<Card
 							isDark={theme.dark}>
 						<Image
-						  style={Style.images}
+						  style={Style.aboutUsScreenImages}
 						  source={item.imgSrc}
 						/>		
 						<CardTitle
