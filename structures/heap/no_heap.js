@@ -6,10 +6,10 @@ const No = props =>
 	  return (
 	      <View>
 		<Text>
-		  {props.index || ""}
+		  {"" || props.index}
 		</Text>
 		<Text>
-		  {props.valor || ""}
+		  {props.valor || " "}
 		</Text>
 	      </View>
 	  );
