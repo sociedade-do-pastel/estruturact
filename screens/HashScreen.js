@@ -70,7 +70,7 @@ export default class HashScreen extends React.Component {
 		}
 		linhaNova[posiçãoElemento]=elemento
 		tabelaCompleta=tabelaCompleta.concat([linhaNova])
-		this.setState({DataTable:tabelaCompleta})
+		this.setState({DataTable:tabelaCompleta});;
 	}
 	
 	Remove(){
@@ -127,6 +127,7 @@ export default class HashScreen extends React.Component {
 		else{
 			return(
 					<SimulationView
+				      ref={(v) => {this.viewRef = v}}
 				      insertOp={(x) => this.setState({numero: x}, this.Adiciona)}
 				      removeOp={(x) => this.setState({numero: x}, this.Remove)}
 				      searchOp={(x) => this.setState({numero: x}, this.Busca)}>
