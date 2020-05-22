@@ -72,7 +72,7 @@ const buildMaxHeap = (vetor_temp) =>
       };
 
 export default buildMaxHeap;
-export {maxHeapify};
+export {maxHeapify, left, right};
 
 
 
