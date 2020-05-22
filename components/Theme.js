@@ -56,6 +56,15 @@ export const Style = StyleSheet.create({
 	simulationScreenAccentColor: {
 		color: simulationsAccent
 	},
+	simulationAnimatedText: {
+		color: 'white',
+		fontSize: 22,
+		textAlign: 'center',
+		backgroundColor: '#64615a',
+		margin: 10,
+		padding: 3,
+		width: windowWidth-20
+	},
 	preHashScreen: {
 		flex: 1,
 		alignItems: 'center',
@@ -72,7 +81,6 @@ export const Style = StyleSheet.create({
 	},
 	simulationViewButtonGroup: {
 		justifyContent: 'flex-end',
-		marginTop: 10,
 		borderTopLeftRadius: 5,
 		borderTopRightRadius: 5,
 		backgroundColor: 'white'
@@ -96,7 +104,7 @@ export const Style = StyleSheet.create({
 	},
 	hashHead: {
 		height: 40,
-		backgroundColor: '#64615a',
+		backgroundColor: simulationsAccent,
 		marginTop: 10
 	},
 	hashText: {
@@ -116,7 +124,7 @@ export const Style = StyleSheet.create({
 	hashFull: {
 		height: 40,
 		width:60,
-		backgroundColor: simulationsAccent,
+		backgroundColor: '#64615a',
 	},
 	hashDataWrapper: {
 		marginTop: -1

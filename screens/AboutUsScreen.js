@@ -14,7 +14,7 @@ export default class AboutUsScreen extends React.Component {
 		return(
 				<ThemeContext.Consumer>
 				{({theme, toggleTheme}) => (
-								<FlatList
+						<FlatList
 			  data={conteudo}
 			  renderItem={({ item }) =>  
 						<Card
