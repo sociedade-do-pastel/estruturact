@@ -137,5 +137,23 @@ export const Style = StyleSheet.create({
 	hashInnerTable: {
 		borderWidth: 3,
 		borderColor: simulationBackground
+	},
+	heapNodeIndex: {
+		textAlign: 'center',
+		color: simulationsAccent,
+		fontWeight: 'bold'
+	},
+	heapNodeNumber: {
+		textAlign: 'center',
+		color: 'white',
+		fontSize: 22,
+		borderRadius: 100,
+		paddingTop: 10,
+		paddingBottom: 10,
+		paddingLeft: 20,
+		paddingRight: 20,
+		margin: 2,
+		backgroundColor: '#64615a',
+		
 	}
 });
