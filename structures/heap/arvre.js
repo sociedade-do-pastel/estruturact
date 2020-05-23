@@ -75,7 +75,6 @@ export default class ArvoreHeap extends React.Component
     
     render ()
     {
-	console.log (this.state.arvore_heap);
 	const vetor_arvre = this.state.arvore_heap.map(
 	    linhas_arvre =>
 		{
@@ -105,13 +104,11 @@ export default class ArvoreHeap extends React.Component
 
 const styles = StyleSheet.create({
     container: {
-	backgroundColor: "blue",
 	flexDirection: "column",
 	justifyContent: "center",
     },
     linhas: {
 	flexDirection: "row",
-	backgroundColor: "pink",
 	justifyContent: "space-evenly",
     }
 });

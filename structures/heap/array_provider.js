@@ -204,7 +204,8 @@ export default class ArrayProvider extends React.Component
 	      value={{
 		  adicionar        : this.adicionarNum,
 		  remover          : this.removerNum,
-		  vetor_apresentado: this.state.array_atual,
+	      vetor_apresentado: this.state.array_atual,
+		  vetorPreenchido  : this.state.array_atual.length === 0 ? false : true,
 		  heap             : this.state.bin_heap,
 		  construir        : this.construirHeap,
 		  popHeap          : this.popHeap,

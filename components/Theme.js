@@ -154,6 +154,28 @@ export const Style = StyleSheet.create({
 		paddingRight: 20,
 		margin: 2,
 		backgroundColor: '#64615a',
-		
+	},
+	preHeap: {
+		flex: 1,
+		flexDirection: 'row',
+		backgroundColor: '#bebebe',
+	},
+	preHeapButton: {
+		textAlign: 'center',
+		textAlignVertical: 'center',
+		color: 'white',
+		padding: 10,
+		backgroundColor: simulationsAccent,
+	},
+	posHeapList: {
+		backgroundColor: 'white',
+		shadowColor: "#000",
+		shadowOffset: {
+			width: 0,
+			height: 2,
+		},
+		shadowOpacity: 0.25,
+		shadowRadius: 3.84,	
+		elevation: 5,
 	}
 });
