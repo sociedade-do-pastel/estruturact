@@ -127,11 +127,12 @@ export default class HashScreen extends React.Component {
 		else{
 			return(
 					<SimulationView
+				      buttons={['Inserir', 'Remover', 'Buscar']}
 				      ref={(v) => {this.viewRef = v}}
-				      insertOp={(x) => this.setState({numero: x}, this.Adiciona)}
-				      removeOp={(x) => this.setState({numero: x}, this.Remove)}
-				      searchOp={(x) => this.setState({numero: x}, this.Busca)}>
-					
+				      operations={[(x) => this.setState({numero: x}, this.Adiciona), 
+								   (x) => this.setState({numero: x}, this.Remove),
+								   (x) => this.setState({numero: x}, this.Busca)]}>
+			
 					<ScrollView horizontal={true}>
 					<View>
 					<Table borderStyle={Style.hashOuterTable}>

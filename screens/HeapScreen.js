@@ -18,27 +18,17 @@ export default class HeapScreen extends React.Component {
 		{
 		    tela_heap =>
 			<SimulationView
-			      editable={true}
-			      insertOp={
-				  valor_insercao =>
-				      tela_heap.adicionar (valor_insercao)
-					  }
-					  removeOp={
-					      valor_deletar =>
-						  tela_heap.remover (valor_deletar)
-					  }
-					  searchOp={
-					      valor_procurar =>
-						  tela_heap.popHeap ()
-					  }
-					  >
-					  <ScrollView>
-					  <Text>Valores que introduzistes</Text>
-					  <Listinha lista={tela_heap.vetor_apresentado}></Listinha>
-					  <Button onPress={tela_heap.construir} title="Construir heap!"/>
-					  <Listinha lista={tela_heap.heap}></Listinha>
-					      <ArvoreHeap heap={tela_heap.heap}></ArvoreHeap>
-						  </ScrollView>
+			  editable={true}
+			  buttons={['Inserir', 'Remover', 'Buscar']}
+			  operations={[valor_insercao => tela_heap.adicionar (valor_insercao),
+					       valor_deletar =>  tela_heap.remover (valor_deletar),
+				       valor_procurar =>  tela_heap.popHeap ()]}>
+			      <ScrollView>
+			      <Listinha lista={tela_heap.vetor_apresentado}></Listinha>
+				  <Button onPress={tela_heap.construir} title="Construir heap!"/>
+				      <Listinha lista={tela_heap.heap}></Listinha>
+					  <ArvoreHeap heap={tela_heap.heap}></ArvoreHeap>
+				  </ScrollView>
 			    </SimulationView>
 			}
 	      </ArrayContext.Consumer>

@@ -38,11 +38,7 @@ export default class SimulationView extends React.Component {
 
 	executeOp(){
 		this.textInput.blur();
-		switch(this.state.selectedIndex){
-		case 0: this.props.insertOp(this.state.valor); break;
-		case 1: this.props.removeOp(this.state.valor); break;
-		case 2: this.props.searchOp(this.state.valor); break;
-		}
+		this.props.operations[this.state.selectedIndex](this.state.valor);
 	}
 	
 	updateIndex(selectedIndex) {
@@ -50,7 +46,8 @@ export default class SimulationView extends React.Component {
 	}
 	
 	render(){
-		const buttons = ['Inserir', 'Remover', 'Buscar'];
+		const buttons = this.props.buttons;
+		const isEditable = this.props.editable === undefined ? true : this.props.editable;
 		const { selectedIndex } = this.state;
 
 		return(
@@ -76,7 +73,7 @@ export default class SimulationView extends React.Component {
 			/>
 				
 			<ButtonGroup
-			  disabled={!this.state.acceptingInput}
+			  disabled={!this.state.acceptingInput || !isEditable}
 			  onPress={this.updateIndex}
 			  buttons={buttons}
 			  selectedIndex={selectedIndex}
@@ -84,7 +81,7 @@ export default class SimulationView extends React.Component {
 				
 			<View style={{margin: 10, flexDirection: 'row'}}>
 			<TextInput
-			  editable={this.state.acceptingInput}
+			  editable={this.state.acceptingInput && isEditable}
 			  ref={input => { this.textInput = input }}
 			  onFocus={() => this.textInput.clear()}
 			  style={Style.simulationViewTextInput}
@@ -93,7 +90,7 @@ export default class SimulationView extends React.Component {
 			  onChangeText={(x) => this.setState({valor: x})}
 			/>
 			<Text
-			  disabled={!this.state.acceptingInput}
+			  disabled={!this.props.editable || !this.state.acceptingInput}
 			  style={Style.simulationViewConfirmButton}
 			  onPress={this.executeOp}
 			>Confirmar</Text>

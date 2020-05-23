@@ -8,6 +8,8 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 import HashScreen from './screens/HashScreen';
 import HeapScreen from './screens/HeapScreen';
+import HashTutorialScreen from './screens/HashTutorialScreen';
+import HeapTutorialScreen from './screens/HeapTutorialScreen';
 import Wrapper from './Wrapper';
 import ThemeButton from './components/ThemeButton';
 import { ThemeContext, themes } from './components/Theme';
@@ -78,6 +80,10 @@ export default class App extends React.Component {
 			        )}}/>
 					<Stack.Screen name="Hash" component={HashScreen}/>
 					<Stack.Screen name="Heap" component={HeapScreen}/>
+					<Stack.Screen name="HashTutorial" component={HashTutorialScreen}
+				                  options={{ title: 'Tutorial Hash' }}/>
+					<Stack.Screen name="HeapTutorial" component={HeapTutorialScreen}
+				                  options={{ title: 'Tutorial Heap' }}/>
 				
 			        </Stack.Navigator>
 					</NavigationContainer>
