@@ -33,13 +33,15 @@ const criarArvore = (heap_passada) =>
 				  return ({
 				      key:   count,
 				      index: heap[count].id,
-				      valor: heap[count].valor
+				      valor: heap[count].valor,
+				      dist : i,
 				  });
 			      else
 				  return ({
 				      key:   count,
 				      index: "",
-				      valor: ""
+				      valor: "",
+				      dist : i,
 				  });
 			  })()
 		  );
