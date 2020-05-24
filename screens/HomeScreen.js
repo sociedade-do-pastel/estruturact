@@ -31,10 +31,16 @@ export default class HomeScreen extends React.Component {
 								inColumn={false}
 								style={{backgroundColor: theme.colors.card, borderTopWidth: 1}}>
 						  <CardButton
-						  onPress={() => this.props.navigation.navigate(item.name)}
-						  title="Simulação"
-						  color={Style.homeScreenAccentColor.color}
+								onPress={() => this.props.navigation.navigate(item.name)}
+								title="Simulação"
+								color={Style.homeScreenAccentColor.color}
+								/>
+						  <CardButton
+								onPress={() => this.props.navigation.navigate(item.name+'Tutorial')}
+								title="Tutorial"
+								color={Style.homeScreenAccentColor.color}
 						  />
+								
 						</CardAction>
 						</Card>
 						 }
