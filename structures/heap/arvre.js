@@ -1,6 +1,6 @@
 import React, {useState, useEffect, Styl} from "react";
 import {View, ScrollView, StyleSheet} from "react-native";
-import No    from "./no_heap.js";
+import No from "./no_heap_arvre.js";
 
 
 const criarArvore = (heap_passada) =>
@@ -87,7 +87,8 @@ export default class ArvoreHeap extends React.Component
 					       <No
 						     key={nos.key}
 						     index={nos.index}
-						     valor={nos.valor}
+							 valor={nos.valor}
+							 dist={nos.dist}
 						     style={{flex:1}}></No>)
 			  }
 			</View>
