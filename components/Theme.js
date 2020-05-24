@@ -176,5 +176,12 @@ export const Style = StyleSheet.create({
 		shadowOpacity: 0.25,
 		shadowRadius: 3.84,	
 		elevation: 5,
-	}
+	},
+	arvreNodeNumber: {
+		textAlign: 'center',
+		color: 'white',
+		borderRadius: 100,
+		margin: 2,
+		backgroundColor: '#64615a',
+	},
 });
