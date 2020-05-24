@@ -8,12 +8,18 @@ export default class ArrayProvider extends React.Component
 {
 
     state = {
-	array_atual: [],
-	is_heap    : false,
-	bin_heap   : [],
+	array_atual     : [],
+	is_heap         : false,
+	bin_heap        : [],
+	mensagem_user   : "",
     };
 
-
+    constructor (props)
+    {
+	super (props);
+	const estado_original = {};
+    }
+    
     // OBS: AMBAS FUNÇÕES ABAIXO APENAS OPERAM NO VETOR DO USUÁRIO
     adicionarListaUsuario = (numero_inserido) =>
     {
@@ -108,7 +114,7 @@ export default class ArrayProvider extends React.Component
 	    	    {
 	    		return {
 	    		    is_heap: true, 
-	    		    bin_heap: buildMaxHeap(
+	    		    bin_heap: buildMaxHeap (
 	    			array_temp
 	    		    ),
 	    		};
@@ -160,11 +166,14 @@ export default class ArrayProvider extends React.Component
 	    if (num < heap_temp[index].valor)
 		return undefined; // mais um caso para mostrar erro
 
-	    heap_temp [index].valor = num;
-	    for( ;index > 0
+	    heap_temp [index].valor = +num;
+
+	    
+	    for( ;index >= 0
 		 && heap_temp[parent(index)].valor < heap_temp[index].valor;
-		 index = parent(index))
+		 )
 	    {
+		console.log(heap_temp[parent(index)].valor + "  " + heap_temp[index].valor);
 		// oh no
 		// não é mais fácil chamar maxHeapify novamente?
 		let temp            = heap_temp[index],
@@ -173,7 +182,11 @@ export default class ArrayProvider extends React.Component
 		heap_temp[index].id = temp.id;
 		heap_temp[parent(index)]     = temp;
 		heap_temp[parent(index)].id  = temp_id;
+		console.log("index " + parent(index));
+		index = parent(index);
 	    }
+
+	    console.log (heap_temp);
 	    return heap_temp;
 
 	};
@@ -197,6 +210,7 @@ export default class ArrayProvider extends React.Component
 			   }
 	    );
 	};
+    
     render ()
     {
 	return (
@@ -205,9 +219,11 @@ export default class ArrayProvider extends React.Component
 		  adicionar        : this.adicionarNum,
 		  remover          : this.removerNum,
 		  vetor_apresentado: this.state.array_atual,
+		  vetorPreenchido  : this.state.array_atual.length === 0 ? false : true,
 		  heap             : this.state.bin_heap,
 		  construir        : this.construirHeap,
-		  popHeap          : this.popHeap,
+		  is_heap          : this.is_heap,
+		  mensagem_user    : this.mensagem_user
 	      }}>
 	      {this.props.children}
 	    </ArrayContext.Provider>

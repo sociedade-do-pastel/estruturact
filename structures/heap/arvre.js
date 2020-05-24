@@ -1,24 +1,13 @@
-import React, {useState} from "react";
-import {View} from "react-native";
+import React, {useState, useEffect, Styl} from "react";
+import {View, ScrollView, StyleSheet} from "react-native";
 import No    from "./no_heap.js";
 
 
-
-const ArvoreHeap = (props) =>
+const criarArvore = (heap_passada) =>
       {
-	  const [arvore_atual, modificar_arvore] = useState(
-	      criarArvore(props.heap));
+	  let heap = Object.assign ([], heap_passada);
 
-	  return (
-	      <View>
-	      </View>
-	  );
-      };
-
-const criarArvore = (heap) =>
-      {
-
-	  // 99, 58, 69, 
+	  // 99, 58, 69,
 	  let vetor_de_niveis = [];
 	  for (let i = 0, count = 0 ;
 	       i < heap.length ;
@@ -41,9 +30,19 @@ const criarArvore = (heap) =>
 		       {
 			      if (heap[count])
 
-				  return (<No index={heap[count].id} valor={heap[count].valor}></No>);
+				  return ({
+				      key:   count,
+				      index: heap[count].id,
+				      valor: heap[count].valor,
+				      dist : i,
+				  });
 			      else
-				  return (<No index="" valor=""></No>);
+				  return ({
+				      key:   count,
+				      index: "",
+				      valor: "",
+				      dist : i,
+				  });
 			  })()
 		  );
 
@@ -56,10 +55,65 @@ const criarArvore = (heap) =>
       };
 
 
-export default ArvoreHeap;
+export default class ArvoreHeap extends React.Component
+{
+    constructor (props)
+    {
+	super (props);
+	this.state = {arvore_heap: []};
+    }
+
+    componentDidUpdate (prevProps)
+    {
+	if (this.props.heap != prevProps.heap)
+	{
+	    this.setState (
+		{
+		    arvore_heap: criarArvore (this.props.heap)
+		}
+	    );
+	}
+    }
+    
+    render ()
+    {
+	const vetor_arvre = this.state.arvore_heap.map(
+	    linhas_arvre =>
+		{
+		    return (
+			<View style={styles.linhas}>
+			  {
+			      linhas_arvre.map(nos =>
+					       <No
+						     key={nos.key}
+						     index={nos.index}
+						     valor={nos.valor}
+						     style={{flex:1}}></No>)
+			  }
+			</View>
+		    );
+		});
+	return (
+	    <View style={styles.container}>
+	      {vetor_arvre}
+	    </View>
+	);
+
+    }
+
+};
 
 
-
+const styles = StyleSheet.create({
+    container: {
+	flexDirection: "column",
+	justifyContent: "center",
+    },
+    linhas: {
+	flexDirection: "row",
+	justifyContent: "space-evenly",
+    }
+});
 
 
 
