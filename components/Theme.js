@@ -114,7 +114,6 @@ export const Style = StyleSheet.create({
 	},
 	hashRow: {
 		flexDirection: 'row',
-		paddingTop:'1%'
 	},
 	hashEmpty: {
 		height: 40,
@@ -132,7 +131,7 @@ export const Style = StyleSheet.create({
 	hashOuterTable: {
 		borderWidth: 4,
 		borderColor: simulationBackground,
-		paddingTop:'10%'
+		paddingTop:'5'
 	},
 	hashInnerTable: {
 		borderWidth: 3,

@@ -16,6 +16,7 @@ export default class HashScreen extends React.Component {
 			numero:'',
 			NumPosicoes:'',
 			widthArr:'',
+			posicao:''
 		};
 		
 		this.props.navigation.setOptions({
@@ -27,6 +28,7 @@ export default class HashScreen extends React.Component {
 		this.showDialog = this.showDialog.bind(this);
 		this.Hash=this.Hash.bind(this);
 		this.Adiciona=this.Adiciona.bind(this);
+		this.AnimacaoAdiciona=this.AnimacaoAdiciona.bind(this);
 		this.Remove=this.Remove.bind(this);
 		this.Busca=this.Busca.bind(this);
 		this.SetPosicoes=this.SetPosicoes.bind(this);
@@ -48,20 +50,52 @@ export default class HashScreen extends React.Component {
 	
 	Hash(){
 		let calculoPosicao=this.state.numero % this.state.HeadTable.length;
+		this.setState({posicao:calculoPosicao})
 		return calculoPosicao;
 	}
 	
 	Adiciona(){
 		let linhaNova=[];
 		let elemento=this.state.numero;
+		if(elemento!=0){
+			elemento=parseInt(elemento)
+		}
 		let posiçãoElemento=this.Hash();
 		let alturaTabela=this.state.DataTable.length;
 		let comprimentoTabela=this.state.DataTable[0].length; // Comprimento deve ser o mesmo para todas as linhas
-		let tabelaCompleta=this.state.DataTable
+		let tabelaCompleta=this.state.DataTable;
 		for (let contador=0;contador<alturaTabela;contador++){
 			if (tabelaCompleta[contador][posiçãoElemento]==''){
 				tabelaCompleta[contador][posiçãoElemento]=elemento
 				this.setState({DataTable:tabelaCompleta})
+				this.AnimacaoAdiciona(elemento,posiçãoElemento,comprimentoTabela);
+				return
+			}
+
+			if(elemento<tabelaCompleta[contador][posiçãoElemento]){
+				for (let contador2=0; contador2<comprimentoTabela;contador2++){
+					linhaNova[contador2]=''
+				}
+				tabelaCompleta=tabelaCompleta.concat([linhaNova]);
+				alturaTabela=this.state.DataTable.length;
+				for (let contador1=alturaTabela;contador1>contador;contador1--){
+					tabelaCompleta[contador1][posiçãoElemento]=tabelaCompleta[contador1-1][posiçãoElemento]
+				}
+				//tabelaCompleta[contador+1][posiçãoElemento]=tabelaCompleta[contador][posiçãoElemento]
+				tabelaCompleta[contador][posiçãoElemento]=elemento
+				this.setState({DataTable:tabelaCompleta})
+				this.AnimacaoAdiciona(elemento,posiçãoElemento,comprimentoTabela);
+				return
+			}
+			if(tabelaCompleta[contador][posiçãoElemento]==elemento){
+				this.viewRef.animate(['1º Passo - Cálculo da posição',
+							"Número a inserir: "+ elemento,
+							"Tamanho da tabela: "+ comprimentoTabela,	
+							"Resto da divisão entre: "+elemento+" / "+comprimentoTabela,
+							"Posição: " + posiçãoElemento,
+							"2º Passo - Inserir número",
+							"Número "+elemento+ " na posição "+posiçãoElemento,
+							"Já existe na Tabela Hash."	])
 				return
 			}
 		}// for para adicionar uma nova linha, caso a altura da posição que deve ser inserido o número esteja cheia completa de números.
@@ -70,39 +104,93 @@ export default class HashScreen extends React.Component {
 		}
 		linhaNova[posiçãoElemento]=elemento
 		tabelaCompleta=tabelaCompleta.concat([linhaNova])
-		this.setState({DataTable:tabelaCompleta});;
+		this.setState({DataTable:tabelaCompleta});
+		this.AnimacaoAdiciona(elemento,posiçãoElemento,comprimentoTabela);
+		return
+	}
+
+	AnimacaoAdiciona(elemento, posiçãoElemento, comprimentoTabela ){
+		this.viewRef.animate([
+							'1º Passo - Cálculo da posição',
+							"Número a inserir: "+ elemento,
+							"Tamanho da tabela: "+ comprimentoTabela,	
+							"Resto da divisão entre: "+elemento+" / "+comprimentoTabela,
+							"Posição: " + posiçãoElemento,
+							"2º Passo - Inserir número",
+							"Número "+elemento+ " na posição "+posiçãoElemento,
+							"Adicionado com sucesso."	])
 	}
 	
 	Remove(){
 		let numeroAremover=this.state.numero;
 		let alturaTabela=this.state.DataTable.length;
 		let tabelaCompleta=this.state.DataTable;
+		let comprimentoTabela=this.state.DataTable[0].length;
 		let posicaoRemover=this.Hash();
+		let encontraNumero=0;
 		for (let contador4=0; contador4<alturaTabela; contador4++){
 			if(tabelaCompleta[contador4][posicaoRemover]==numeroAremover){
+				this.viewRef.animate(['1º Passo - Cálculo da posição',
+							"Número a remover: "+ numeroAremover,
+							"Tamanho da tabela: "+ comprimentoTabela,	
+							"Resto da divisão entre: "+numeroAremover+" / "+comprimentoTabela,
+							"Posição: " + posicaoRemover,
+							"2º Passo - Remover número",
+							"Número "+numeroAremover+ " na posição "+posicaoRemover,
+							"Removido com sucesso."	])
 				for(contador4;contador4< alturaTabela-1; contador4++){
 					tabelaCompleta[contador4][posicaoRemover]=tabelaCompleta[contador4+1][posicaoRemover]
 				}
 				tabelaCompleta[contador4][posicaoRemover]=''
 				contador4+=2
+				encontraNumero=1;
 			}
+
 		}
-		this.setState({DataTable:tabelaCompleta})
+		if(encontraNumero==0){
+			this.viewRef.animate(['1º Passo - Cálculo da posição',
+							"Número a remover: "+ numeroAremover,
+							"Tamanho da tabela: "+ comprimentoTabela,	
+							"Resto da divisão entre: "+numeroAremover+" / "+comprimentoTabela,
+							"Posição: " + posicaoRemover,
+							"2º Passo - Remover número",
+							"Número "+numeroAremover+ " na posição "+posicaoRemover,
+							"Não encontrado.",
+							"Portanto, não pode ser removido."	
+							])
+		}
+		else{
+			this.setState({DataTable:tabelaCompleta})
+		}
 	}
 	
 	Busca(){
 		let numeroBuscar=this.state.numero;
 		let alturaTabela=this.state.DataTable.length;
 		let tabelaCompleta=this.state.DataTable;
-		let posicaoRemover=this.Hash();
+		let comprimentoTabela=this.state.DataTable[0].length;
+		let posicaoBuscar=this.Hash();
 		for (let contador4=0; contador4<alturaTabela; contador4++){
-			if(tabelaCompleta[contador4][posicaoRemover]==numeroBuscar){
-				alert(`Número ${numeroBuscar} encontrado.`)
-			}
-			else{
-				alert(`Número ${numeroBuscar} não encontrado.`)
+			if(tabelaCompleta[contador4][posicaoBuscar]==numeroBuscar){
+				this.viewRef.animate(['1º Passo - Cálculo da posição',
+							"Número a buscar: "+ numeroBuscar,
+							"Tamanho da tabela: "+ comprimentoTabela,
+							"Resto da divisão entre: "+numeroBuscar+" / "+comprimentoTabela,
+							"Posição: " + posicaoBuscar,
+							"2º Passo - Encontrar número",
+							"Número "+numeroBuscar+ " encontrado."
+								])
+				return
 			}
 		}
+		this.viewRef.animate(['1º Passo - Cálculo da posição',
+							"Número a remover: "+ numeroBuscar,
+							"Tamanho da tabela: "+ comprimentoTabela,
+							"Resto da divisão entre: "+numeroBuscar+" / "+comprimentoTabela,
+							"Posição: " + posicaoBuscar,
+							"2º Passo - Encontrar número",
+							"Número "+numeroBuscar+ " não encontrado."
+								])
 	}
 	
 	showDialog(){ this.setState({isDialogVisible: true}); }
@@ -127,6 +215,7 @@ export default class HashScreen extends React.Component {
 		else{
 			return(
 					<SimulationView
+					  editable={true}
 				      buttons={['Inserir', 'Remover', 'Buscar']}
 				      ref={(v) => {this.viewRef = v}}
 				      operations={[(x) => this.setState({numero: x}, this.Adiciona), 
