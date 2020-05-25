@@ -153,11 +153,14 @@ export const Style = StyleSheet.create({
 		paddingRight: 20,
 		margin: 2,
 		backgroundColor: '#64615a',
+		margin: 5
 	},
 	preHeap: {
 		flex: 1,
 		flexDirection: 'row',
 		backgroundColor: '#bebebe',
+		margin: 5,
+		borderRadius: 5
 	},
 	preHeapButton: {
 		textAlign: 'center',
@@ -165,9 +168,13 @@ export const Style = StyleSheet.create({
 		color: 'white',
 		padding: 10,
 		backgroundColor: simulationsAccent,
+		borderTopRightRadius: 5,
+		borderBottomRightRadius: 5
 	},
 	posHeapList: {
 		backgroundColor: 'white',
+		borderRadius: 5,
+		margin: 5,
 	},
 	arvreNodeNumber: {
 		textAlign: 'center',
@@ -175,6 +182,7 @@ export const Style = StyleSheet.create({
 		borderRadius: 100,
 		margin: 2,
 		backgroundColor: '#64615a',
+		marginBottom: 10
 	},
 	card: {
 		shadowColor: "#000",

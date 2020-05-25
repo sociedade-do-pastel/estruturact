@@ -6,6 +6,7 @@ import {
 	View
 } from 'react-native';
 import {Style} from '../components/Theme';
+import {Section} from '../components/TutorialComponents';
 import SimulationView from '../components/SimulationView';
 import ArrayProvider from '../structures/heap/array_provider.js';
 import {ArrayContext} from '../structures/heap/array_provider.js';
@@ -36,10 +37,13 @@ export default class HeapScreen extends React.Component {
 				   valor_procurar =>  tela_heap.popHeap ()]
 			      }>
 			      
-			      <ScrollView>
-				    <View style={Style.preHeap}>
-					  <Listinha lista={tela_heap.vetor_apresentado}></Listinha>
-					      {tela_heap.vetorPreenchido ?
+			    <ScrollView>
+				{tela_heap.vetorPreenchido ?
+				 <View style={[Style.preHeap, Style.card]}>
+				 <View style={{flex: 1, flexDirection: 'column'}}>
+				     <Section viewStyle={{margin: 5}} textStyle={{fontSize: 18}}>Seu vetor</Section>
+				     <Listinha lista={tela_heap.vetor_apresentado}></Listinha>
+				   </View>
 					       <Text
 						     style={Style.preHeapButton}
 						     onPress={
@@ -47,14 +51,25 @@ export default class HeapScreen extends React.Component {
 							      this.state.buttonName === 'Construir Heap'
 								  ? this.setState({buttonName: 'Resetar'}, tela_heap.construir)
 								  : this.setState({buttonName: 'Construir Heap', id_tela: this.state.id_tela + 1})}
-								  >{this.state.buttonName}</Text>
+				                  >{this.state.buttonName}</Text>
+				 </View>
 						   : null
-						   }
-					</View>
+				}
 				        <View style={[Style.posHeapList, Style.card]}>
+				         {tela_heap.heapPreenchida ?
+				          <Section viewStyle={{margin: 5}} textStyle={{fontSize: 18}}>Max-heap gerada</Section>
+   				         : null
+				         }
 					      <Listinha lista={tela_heap.heap}></Listinha>
-					    </View>
-					    <ArvoreHeap heap={tela_heap.heap}></ArvoreHeap>
+				        </View>
+				        <View style={[Style.posHeapList, Style.card]}>
+				         {tela_heap.heapPreenchida ?
+				          <Section viewStyle={{margin: 5}} textStyle={{fontSize: 18}}>Forma de árvore</Section>
+   				         : null
+				         }
+				          <ArvoreHeap heap={tela_heap.heap}></ArvoreHeap>
+				       </View>
+		
 				  </ScrollView>
 			    </SimulationView>
 			}

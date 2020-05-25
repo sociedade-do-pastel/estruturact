@@ -182,7 +182,6 @@ export default class ArrayProvider extends React.Component
 		heap_temp[index].id = temp.id;
 		heap_temp[parent(index)]     = temp;
 		heap_temp[parent(index)].id  = temp_id;
-		console.log("index " + parent(index));
 		index = parent(index);
 	    }
 
@@ -221,6 +220,7 @@ export default class ArrayProvider extends React.Component
 		  vetor_apresentado: this.state.array_atual,
 		  vetorPreenchido  : this.state.array_atual.length === 0 ? false : true,
 		  heap             : this.state.bin_heap,
+		  heapPreenchida   : this.state.bin_heap.length === 0 ? false : true,
 		  construir        : this.construirHeap,
 		  is_heap          : this.state.is_heap,
 		  mensagem_user    : this.mensagem_user

@@ -1,51 +1,8 @@
 import React from 'react';
-import { View, ScrollView, StyleSheet, Image, Dimensions, SafeAreaView } from 'react-native';
+import { ScrollView } from 'react-native';
 import { Style } from '../components/Theme';
 import Text from '../components/CustomText';
-const {width, height} = Dimensions.get("window")
-
-
-const Section = (props) =>
-      {
-	  return (
-		  <View style = {style_text.section}>
-		<Text style = {style_text.text}>
-		  {props.children}
-		</Text>
-	      </View>
-	  );
-      };
-
-const Picture = (props) =>
-      {
-	  return (
-			  <Image style={[{flex: 1, resizeMode: 'contain', maxWidth: width-35}, props.style]} source={props.source}/>
-	  );
-      };
-
-const Paragraph = (props) =>
-      {
-	  return (
-
-	      <Text style={style_text.paragraph}>{props.children}</Text>
-	  );
-      };
-
-const Card = (props) =>
-      {
-	  return (
-
-			  <View style={[style_text.card, Style.card]}>{props.children}</View>
-	  );
-      };
-
-const SubCard = (props) =>
-      {
-	  return (
-
-	      <View style={style_text.subCard}>{props.children}</View>
-	  );
-      };
+import { Section, Picture, Paragraph, Card, SubCard } from '../components/TutorialComponents';
 
 const HeapTutorialScreen = (props) =>
       {
@@ -126,47 +83,4 @@ const HeapTutorialScreen = (props) =>
 	  
       };
 
-const style_text = StyleSheet.create (
-    {
-	text: {
-	    fontSize: 26,
-	    textAlign: "left",
-	    fontWeight: "bold",
-	    paddingBottom: 3,
-	    fontFamily:  "sans-serif-thin",
-		color: '#2089dc'
-	},
-	section : {
-	    borderBottomColor: "black",
-	    borderBottomWidth: StyleSheet.hairlineWidth,
-	    paddingTop: 4,
-	    paddingLeft: 20,
-	},
-	paragraph : {
-	    textAlign : "justify",
-	    margin: 5,
-	    paddingLeft: 3,
-		fontSize: 16
-	},
-	card:{
-		backgroundColor: 'white',
-		margin: 5,
-		borderRadius: 5,
-		padding: 10,
-	},
-	subCard:{
-		backgroundColor: '#bebebe',
-		margin: 5,
-		borderRadius: 5,
-		padding: 10,
-		color: 'white'
-	}
-		
-    });
 export default HeapTutorialScreen;
-
-
-
-
-
-
