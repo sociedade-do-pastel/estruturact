@@ -168,14 +168,6 @@ export const Style = StyleSheet.create({
 	},
 	posHeapList: {
 		backgroundColor: 'white',
-		shadowColor: "#000",
-		shadowOffset: {
-			width: 0,
-			height: 2,
-		},
-		shadowOpacity: 0.25,
-		shadowRadius: 3.84,	
-		elevation: 5,
 	},
 	arvreNodeNumber: {
 		textAlign: 'center',
@@ -184,4 +176,14 @@ export const Style = StyleSheet.create({
 		margin: 2,
 		backgroundColor: '#64615a',
 	},
+	card: {
+		shadowColor: "#000",
+		shadowOffset: {
+			width: 0,
+			height: 2,
+		},
+		shadowOpacity: 0.25,
+		shadowRadius: 3.84,	
+		elevation: 5,
+	}
 });

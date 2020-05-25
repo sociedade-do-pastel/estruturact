@@ -18,6 +18,7 @@ export default class AboutUsScreen extends React.Component {
 			  data={conteudo}
 			  renderItem={({ item }) =>  
 						<Card
+						    style={Style.card}
 							isDark={theme.dark}>
 						<Image
 						  style={Style.aboutUsScreenImages}

@@ -222,7 +222,7 @@ export default class ArrayProvider extends React.Component
 		  vetorPreenchido  : this.state.array_atual.length === 0 ? false : true,
 		  heap             : this.state.bin_heap,
 		  construir        : this.construirHeap,
-		  is_heap          : this.is_heap,
+		  is_heap          : this.state.is_heap,
 		  mensagem_user    : this.mensagem_user
 	      }}>
 	      {this.props.children}

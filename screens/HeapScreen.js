@@ -29,14 +29,7 @@ export default class HeapScreen extends React.Component {
 		    tela_heap =>
 			<SimulationView
 			      editable={true}
-			      buttons={
-				  (() => {
-				      if (tela_heap.heap.is_heap)
-					  return ["Inserir", "PopFront"];
-				      else
-					  return ["Inserir", "Remover"];
-				  })()
-			      }
+			      buttons={tela_heap.is_heap ? ["Inserir", "PopFront"] :  ["Inserir", "Remover"]}
 			      operations={
 				  [valor_insercao => tela_heap.adicionar (valor_insercao),
 				   valor_deletar =>  tela_heap.remover (valor_deletar),
@@ -58,7 +51,7 @@ export default class HeapScreen extends React.Component {
 						   : null
 						   }
 					</View>
-					<View style={Style.posHeapList}>
+				        <View style={[Style.posHeapList, Style.card]}>
 					      <Listinha lista={tela_heap.heap}></Listinha>
 					    </View>
 					    <ArvoreHeap heap={tela_heap.heap}></ArvoreHeap>

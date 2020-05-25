@@ -17,6 +17,7 @@ export default class HomeScreen extends React.Component {
 					data={conteudo}
 					renderItem={({ item }) =>
 						  <Card
+							style={Style.card}
 							isDark={theme.dark}>
 						  <Image
 								style={[Style.homeScreenImages, {backgroundColor: theme.colors.card}]}

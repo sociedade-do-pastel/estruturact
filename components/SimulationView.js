@@ -3,6 +3,8 @@ import { View, Text, TextInput, FlatList } from 'react-native';
 import { ButtonGroup } from 'react-native-elements';
 import { Style } from './Theme';
 
+const animationInterval = 1750;
+
 export default class SimulationView extends React.Component {
 	constructor(props){
 		super(props);
@@ -23,16 +25,16 @@ export default class SimulationView extends React.Component {
 		for(let x=0; x<this.state.operationQueue.length; x++, y++){
 			setTimeout(()=>{
 				this.flatListRef.scrollToIndex({animated: true, index: x})
-			}, 1500*y);
+			}, animationInterval*y);
 		}
 		
 		setTimeout(()=>{
 			this.flatListRef.scrollToIndex({animated: true, index: 0})
-		}, 1500*y);
+		}, animationInterval*y);
 
 		setTimeout(()=>{
 			this.setState({operationQueue: [{id: 0, text: 'Aguardando operação'}], acceptingInput: true});
-		}, (1500*y)+500);
+		}, (animationInterval*y)+500);
 		
 	}
 
