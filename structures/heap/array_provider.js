@@ -11,39 +11,32 @@ export default class ArrayProvider extends React.Component
 	array_atual     : [],
 	is_heap         : false,
 	bin_heap        : [],
-	mensagem_user   : "",
+	index_escolhido : undefined,
     };
-
-    constructor (props)
-    {
-	super (props);
-	const estado_original = {};
-    }
     
     // OBS: AMBAS FUNÇÕES ABAIXO APENAS OPERAM NO VETOR DO USUÁRIO
     adicionarListaUsuario = (numero_inserido) =>
-    {
-	this.setState ((estado_anterior) =>
-		       {
-			   return {
-			       array_atual:[...this.state.array_atual,
-					    {
-						valor: +numero_inserido,
-						id: this.state.array_atual.length
-					    }]
-			   };
-		       });
-    };
+	{
+	    this.setState ((estado_anterior) =>
+			   {
+			       return {
+				   array_atual:[...this.state.array_atual,
+						{
+						    valor: +numero_inserido,
+						    id: this.state.array_atual.length
+						}]
+			       };
+			   }, this.props.mensageiro ([`Inserido ${numero_inserido}`]));
+	};
     
     apagarListaUsuario = (numero_inserido) =>
 	{
 	    let vetor_temp = Object.assign ([], this.state.array_atual);
-	    
 	    this.setState ({
-		    array_atual: this.apagarItem (
-		this.acharIndice (numero_inserido, vetor_temp),
+		array_atual: this.apagarItem (
+		    this.acharIndice (numero_inserido, vetor_temp),
 		    vetor_temp) || this.state.array_atual
-		});
+	    });
 
 	};
     
@@ -56,7 +49,10 @@ export default class ArrayProvider extends React.Component
     adicionarNum = (numero_inserido) =>
 	{
 	    if (!numero_inserido)
+	    {
+		this.props.mensageiro (["Valor inválido!"]);
 		return ;
+	    }
 	    else if (this.state.is_heap)
 		this.inserirHeap (numero_inserido);
 	    else
@@ -72,9 +68,14 @@ export default class ArrayProvider extends React.Component
 		 j--)
 	    {
 		if (vetor[j].valor == num)
+		{
+		    // canalhice, mas é o que tem pra hoje
+		    this.props.mensageiro ([`Removido ${num} em ${j}`]); 
 		    return j;
+		}
 	    }
-	    return -1; // se não achado mostrar uma mensagem?
+	    this.props.mensageiro (["Valor não achado :("]);
+	    return -1;
 	};
 
     
@@ -98,11 +99,18 @@ export default class ArrayProvider extends React.Component
     removerNum = (numero_inserido) =>
 	{
 	    if (!numero_inserido)
+	    {
+		this.props.mensageiro (["Valor inválido!"]);
 		return ;
+	    }
 	    else if (this.state.is_heap)
+	    {
 		this.popHeap ();
+	    }
 	    else
+	    {
 		this.apagarListaUsuario (numero_inserido);
+	    }
 	};
 
     // novamente, importante realizar as operações sobre uma cópia
@@ -115,18 +123,22 @@ export default class ArrayProvider extends React.Component
 	    		return {
 	    		    is_heap: true, 
 	    		    bin_heap: buildMaxHeap (
-	    			array_temp
+    				array_temp
 	    		    ),
 	    		};
-	    	    });
+	    	    }, this.props.mensageiro (["Criada Heap!"]));
 	};
 
     // operações sobre a heap criada -> priority queue
     popHeap = () =>
 	{
 	    if (!this.state.bin_heap.length)
-		return ; // talvez produzir uma mensagem de erro animada?
+	    {
+		this.props.mensageiro (["Heap vazia!"]);
+		return ; 
+	    }
 
+	    let maior_num = this.state.bin_heap[0]; 
 	    this.setState(
 		(estado_anterior) =>
 		    {
@@ -144,7 +156,7 @@ export default class ArrayProvider extends React.Component
 					   return maxHeapify (heap_temp, 0);
 				       })()
 			};
-		    });
+		    }, this.props.mensageiro ([`Apagado ${maior_num.valor}!`]));
 	};
 
     // a palavra "value" faz mais sentido que key nesse caso
@@ -161,19 +173,27 @@ export default class ArrayProvider extends React.Component
 		      return indice_retorno;
 		  };
 	    
-	    let heap_temp = vetor_opcional || Object.assign ([], this.state.bin_heap);
-
+	    let heap_temp = vetor_opcional || Object.assign ([], this.state.bin_heap),
+		vetor_operacoes = [];
+	    
 	    if (num < heap_temp[index].valor)
+	    {
+		this.props.mensageiro ([
+		    `O valor ${num} é menor que`,
+		    `${heap_temp[index].valor}`
+		]);
 		return undefined; // mais um caso para mostrar erro
-
+	    }
+	    // father forgive me but I have sinned 
+	    if (heap_temp[index] != Number.NEGATIVE_INFINITY)
+		this.props.mensageiro ([`Aumentado ${heap_temp[index].valor}`, `para ${num}`]);
+	    
 	    heap_temp [index].valor = +num;
 
-	    
 	    for( ;index >= 0
 		 && heap_temp[parent(index)].valor < heap_temp[index].valor;
-		 )
+	       )
 	    {
-		console.log(heap_temp[parent(index)].valor + "  " + heap_temp[index].valor);
 		// oh no
 		// não é mais fácil chamar maxHeapify novamente?
 		let temp            = heap_temp[index],
@@ -182,10 +202,10 @@ export default class ArrayProvider extends React.Component
 		heap_temp[index].id = temp.id;
 		heap_temp[parent(index)]     = temp;
 		heap_temp[parent(index)].id  = temp_id;
+		vetor_operacoes.push (`Trocado ${heap_temp[index].valor} com ${temp.valor}`);
 		index = parent(index);
 	    }
-
-	    console.log (heap_temp);
+	    this.props.mensageiro (vetor_operacoes);
 	    return heap_temp;
 
 	};
@@ -197,18 +217,56 @@ export default class ArrayProvider extends React.Component
 			   {
 			       return {
 				   bin_heap: (() =>
-				       {
-					   return this.heapIncreaseValue (this.state.bin_heap.length,
-									  numero_inserir,
-									  Object.assign ([],
-									  [...this.state.bin_heap, {
-									      valor: Number.NEGATIVE_INFINITY,
-									      id: this.state.bin_heap.length}]));
-				       })()
+					      {
+						  return this.heapIncreaseValue (
+						      this.state.bin_heap.length,
+						      numero_inserir,
+						      Object.assign ([],
+								     [...this.state.bin_heap, {
+									 valor: Number.NEGATIVE_INFINITY,
+									 id: this.state.bin_heap.length}]));
+					      })() || this.state.bin_heap
 			       };
-			   }
-	    );
+			   },  this.props.mensageiro ([`Inserido ${numero_inserir}`]));
 	};
+
+    // mini-gambiarra no aumentar valor, que se aproveita
+    // do sistema de mensagens do gui
+    // primeiro insira um index e depois o valor
+    aumentarValor = (valor) =>
+	{
+
+	    if (this.state.index_escolhido)
+	    {
+		let conj_valores = {
+		    index: this.state.index_escolhido,
+		    valor: this.state.bin_heap[this.state.index_escolhido].valor,
+		};
+		this.setState( (estado_atual) =>
+			       {
+				   return {
+				       bin_heap: (() =>
+						  {
+						      return this.heapIncreaseValue (
+							  this.state.index_escolhido,
+							  valor,
+							  Object.assign ([],this.state.bin_heap));
+						  })() || this.state.bin_heap,
+				       index_escolhido: undefined,
+				   };
+			       });
+	    }
+	    else if (valor >= this.state.bin_heap.length)
+	    {
+		this.props.mensageiro (["Índice inválido"]);
+	    }
+	    else 
+	    {
+		this.setState ({
+		    index_escolhido: valor,
+		},  this.props.mensageiro ([`Índice escolhido: ${valor}`]));
+	    }
+	}
     
     render ()
     {
@@ -223,7 +281,8 @@ export default class ArrayProvider extends React.Component
 		  heapPreenchida   : this.state.bin_heap.length === 0 ? false : true,
 		  construir        : this.construirHeap,
 		  is_heap          : this.state.is_heap,
-		  mensagem_user    : this.mensagem_user
+		  aumentarValor    : this.aumentarValor,
+		  
 	      }}>
 	      {this.props.children}
 	    </ArrayContext.Provider>

@@ -11,14 +11,16 @@ React, uma simulação visual de algumas (2) estruturasa de dados.
    - [[https://www.cs.usfca.edu/~galles/visualization/Algorithms.html][Visualização de estrutura de dados (USFCA)]]
    - [[https://visualgo.net/en][VISUALGO: Visualização mais agradável de algumas estruturas]]
 
-*** Processo de desenvolvimento [4/7]
+*** Processo de desenvolvimento [7/9]
     - [X] Definir quais estruturas
     - [X] Estudo das estruturas escolhidas
     - [X] /Look and Feel/
     - [X] Página /Sobre nós/
-    - [ ] Implementação da Hash
-    - [ ] Implementação da Heap
-    - [ ] Artes da /home screen/
+    - [X] Implementação da Hash
+    - [X] Implementação da Heap
+    - [X] Artes da /home screen/
+    - [ ] Relatório final
+    - [ ] Correção de /bugs/ e erros
 
 *** Ambiente de desenvolvimento
     - React native cli

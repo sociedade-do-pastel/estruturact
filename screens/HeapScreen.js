@@ -22,19 +22,25 @@ export default class HeapScreen extends React.Component {
 	};
     }
     
+    mensageiro = (mensagem) =>
+	{
+	    this.viewRef.animate (mensagem);
+	}
+    
     render(){
 	return(
-	    <ArrayProvider key={this.state.id_tela}>
+	    <ArrayProvider key={this.state.id_tela} mensageiro={this.mensageiro}>
 	      <ArrayContext.Consumer>
 		{
 		    tela_heap =>
 			<SimulationView
+			      ref={v => {this.viewRef = v;}}
 			      editable={true}
-			      buttons={tela_heap.is_heap ? ["Inserir", "PopFront"] :  ["Inserir", "Remover"]}
+			      buttons={tela_heap.is_heap ? ["Inserir", "PopFront", "Aumentar"] :  ["Inserir", "Remover"]}
 			      operations={
 				  [valor_insercao => tela_heap.adicionar (valor_insercao),
 				   valor_deletar =>  tela_heap.remover (valor_deletar),
-				   valor_procurar =>  tela_heap.popHeap ()]
+				   valor_aumentar =>  tela_heap.aumentarValor (valor_aumentar)]
 			      }>
 			      
 			    <ScrollView>
@@ -72,6 +78,7 @@ export default class HeapScreen extends React.Component {
 		
 				  </ScrollView>
 			    </SimulationView>
+
 			}
 	      </ArrayContext.Consumer>
 	    </ArrayProvider>
