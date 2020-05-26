@@ -1,8 +1,7 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { Style } from '../components/Theme';
-import Text from '../components/CustomText';
-import { Section, Picture, Paragraph, Card, SubCard } from '../components/TutorialComponents';
+import Text, { Section, Picture, Paragraph, Card, SubCard } from '../components/TutorialComponents';
 
 const HeapTutorialScreen = (props) =>
       {
@@ -31,16 +30,16 @@ const HeapTutorialScreen = (props) =>
 		  Primeiro insira uma sequência de inteiros
 		  que deseja se construir uma max-heap com. </Paragraph>
 
-		<Picture style={{maxHeight: 200}} source={require('../images/inserir.png')}/>
+		<Picture style={{height: 210}} source={require('../images/inserirHeap.png')}/>
 		  
 		<Paragraph>Fique livre para remover os valores indesejados. Ao concluir pressione "Construir heap"</Paragraph>
 
-		<Picture style={{maxHeight: 100}} source={require('../images/construirHeap.png')}/>
+		<Picture style={{height: 110}} source={require('../images/construirHeap.png')}/>
 		  
 		<Paragraph>Por ser uma árvore binária completa,
 	      uma Heap ainda pode ser representada como vetor. Cada índice representa os nós indo da esquerda para a direita. </Paragraph>
 
-		<Picture style={{maxHeight: 100}} source={require('../images/vetorHeap.png')}/>
+		<Picture style={{height: 110}} source={require('../images/vetorHeap.png')}/>
 
 		<Paragraph>Para descobrir o filho esquerdo de um nó em um vetor
 		  indexado em 0, apenas faça </Paragraph>
@@ -54,8 +53,9 @@ const HeapTutorialScreen = (props) =>
 		  fila de prioridade, onde três operações existem:
 		</Paragraph>
 
-		  <SubCard>
-		<Text>Imagem de cada uma?</Text>
+		<Picture style={{height: 90}} source={require('../images/operacoesHeap.png')}/>
+		  
+		<SubCard>
 		<Text style={{marginBottom: 10}}>
 		  1 - Inserir: insere o valor e calcula a possibilidade deste
 		      novo valor ter quebrado uma das regras da Max-heap</Text>

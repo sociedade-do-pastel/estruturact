@@ -7,10 +7,10 @@ const No = props =>
 	  return (
 		  <View>
 			  <Text style={props.index === "" ? {} : Style.heapNodeIndex}>
-			  {"" || props.index}
+			  {props.index}
 		      </Text>
 			  <Text style={props.valor === "" ? {} : Style.heapNodeNumber}>
-			  {props.valor || " "}
+			  {props.valor}
 		      </Text>
 		  </View>
 	  );

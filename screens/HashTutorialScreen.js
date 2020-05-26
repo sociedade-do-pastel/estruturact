@@ -1,8 +1,7 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { Style } from '../components/Theme';
-import Text from '../components/CustomText';
-import { Section, Picture, Paragraph, Card, SubCard } from '../components/TutorialComponents';
+import Text, { Section, Picture, Paragraph, Card, SubCard } from '../components/TutorialComponents';
 
 export default class HashTutorialScreen extends React.Component {
 	constructor(props){
@@ -28,12 +27,16 @@ export default class HashTutorialScreen extends React.Component {
 
 		<Card>
 		<Section>A simulação</Section>
-			<Paragraph>O primeiro passo para fazer a simulação da Tabela Hash é clicar em "NOVO", sendo aberta 
-				após o clique uma caixa de Diálogo, como mostrado abaixo, solicitando que o usuário insira o
-				tamanho da estrutura,ou seja, a quantidade de posições que terá a nova Tabela Hash. 
-			 </Paragraph>
+		<Paragraph>O primeiro passo para fazer a simulação da Tabela Hash é clicar em "NOVO".
+		</Paragraph>
 
-		<Picture style={{maxHeight: 200}} source={require('../images/inserir.png')}/>
+		<Picture style={{height: 90}} source={require('../images/novoHash.png')}/>
+			
+		<Paragraph>
+		Sendo aberta após o clique uma caixa de Diálogo, como mostrado abaixo, solicitando que o usuário insira o tamanho da estrutura,ou seja, a quantidade de posições que terá a nova Tabela Hash. 
+		</Paragraph>
+				
+				<Picture style={{height: 310}} source={require('../images/novoMenuHash.png')}/>
 		  
 		<Paragraph>
 			Com a Tabela Hash criada, é hora de simular as operações disponíveis: "Inserir", "Remover" e "Buscar".
@@ -43,7 +46,7 @@ export default class HashTutorialScreen extends React.Component {
 			executada pela Estrutura na caixa de texto cinza de forma dinâmica e intuitiva.
 		</Paragraph>
 
-		<Picture style={{maxHeight: 100}} source={require('../images/construirHeap.png')}/>
+		<Picture style={{height: 210}} source={require('../images/inserirHash.png')}/>
 		  
 		</Card>
 
@@ -54,7 +57,6 @@ export default class HashTutorialScreen extends React.Component {
 			abaixo encontra-se um passo a passo bem simples e didático.
 		  </Paragraph>
 		  <SubCard>
-		<Text>Imagem de cada uma?</Text>
 		<Text style={{marginBottom: 10}}>
 		  1 - Novo: Clicar em novo para a criação de uma nova Tabela Hash</Text>
 		<Text style={{marginBottom: 10}}>

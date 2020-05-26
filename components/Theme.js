@@ -193,5 +193,46 @@ export const Style = StyleSheet.create({
 		shadowOpacity: 0.25,
 		shadowRadius: 3.84,	
 		elevation: 5,
+	},
+	tutorialText: {
+		fontSize: 16
+	},
+	tutorialSectionText: {
+	    fontSize: 26,
+	    textAlign: "left",
+	    fontWeight: "bold",
+	    paddingBottom: 3,
+	    fontFamily:  "sans-serif-thin",
+		color: '#2089dc'
+	},
+	tutorialSectionView: {
+	    borderBottomColor: "black",
+	    borderBottomWidth: StyleSheet.hairlineWidth,
+	    paddingTop: 4,
+	    paddingLeft: 20,
+	},
+	tutorialParagraph: {
+	    textAlign : "justify",
+	    margin: 5,
+	    paddingLeft: 3,
+		fontSize: 16
+	},
+	tutorialCard:{
+		backgroundColor: 'white',
+		margin: 5,
+		borderRadius: 5,
+		padding: 10,
+	},
+	tutorialSubCard:{
+		backgroundColor: '#bebebe',
+		margin: 5,
+		borderRadius: 5,
+		padding: 10,
+		color: 'white'
+	},
+	tutorialPicture:{
+		flex: 1,
+		resizeMode: 'contain',
+		maxWidth: windowWidth-30
 	}
 });
