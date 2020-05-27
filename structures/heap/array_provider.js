@@ -24,9 +24,10 @@ export default class ArrayProvider extends React.Component
 						{
 						    valor: +numero_inserido,
 						    id: this.state.array_atual.length
-						}]
+						}],
 			       };
 			   }, this.props.mensageiro ([`Inserido ${numero_inserido}`]));
+
 	};
     
     apagarListaUsuario = (numero_inserido) =>
@@ -35,9 +36,9 @@ export default class ArrayProvider extends React.Component
 	    this.setState ({
 		array_atual: this.apagarItem (
 		    this.acharIndice (numero_inserido, vetor_temp),
-		    vetor_temp) || this.state.array_atual
+		    vetor_temp) || this.state.array_atual,
+	
 	    });
-
 	};
     
     // dois estados existem: pré heap criada e pós heap criada
@@ -48,15 +49,13 @@ export default class ArrayProvider extends React.Component
     // a heap passa a ser tratada como fila prioritária
     adicionarNum = (numero_inserido) =>
 	{
-	    if (!numero_inserido)
-	    {
+	    if (!numero_inserido || isNaN (+numero_inserido))
 		this.props.mensageiro (["Valor inválido!"]);
-		return ;
-	    }
 	    else if (this.state.is_heap)
 		this.inserirHeap (numero_inserido);
 	    else
 		this.adicionarListaUsuario (numero_inserido);
+
 	}
 
     
@@ -70,11 +69,11 @@ export default class ArrayProvider extends React.Component
 		if (vetor[j].valor == num)
 		{
 		    // canalhice, mas é o que tem pra hoje
-		    this.props.mensageiro ([`Removido ${num} em ${j}`]); 
 		    return j;
+
 		}
 	    }
-	    this.props.mensageiro (["Valor não achado :("]);
+	    this.props.mensageiro (["Valor não achado!"]);
 	    return -1;
 	};
 
@@ -83,6 +82,7 @@ export default class ArrayProvider extends React.Component
 	{
 	    if (indice < 0)
 		return undefined;
+	    this.props.mensageiro ([`Apagado ${vetor[indice].valor}`]);
 	    // gambiarra que joga o item achado pra
 	    // última posição
 	    for (let j = indice;
@@ -92,25 +92,19 @@ export default class ArrayProvider extends React.Component
 		vetor[j].valor = vetor[j+1].valor;
 		vetor[j].id = (vetor[j+1].id - 1);
 	    }
+
 	    vetor.pop ();
 	    return vetor;
 	};
     
     removerNum = (numero_inserido) =>
 	{
-	    if (!numero_inserido)
-	    {
+	    if (!numero_inserido || isNaN (+numero_inserido))
 		this.props.mensageiro (["Valor inválido!"]);
-		return ;
-	    }
 	    else if (this.state.is_heap)
-	    {
 		this.popHeap ();
-	    }
 	    else
-	    {
 		this.apagarListaUsuario (numero_inserido);
-	    }
 	};
 
     // novamente, importante realizar as operações sobre uma cópia
@@ -185,8 +179,10 @@ export default class ArrayProvider extends React.Component
 		return undefined; // mais um caso para mostrar erro
 	    }
 	    // father forgive me but I have sinned 
-	    if (heap_temp[index] != Number.NEGATIVE_INFINITY)
-		this.props.mensageiro ([`Aumentado ${heap_temp[index].valor}`, `para ${num}`]);
+	    if (heap_temp[index].valor != Number.NEGATIVE_INFINITY)
+		vetor_operacoes.push (`Aumentado ${heap_temp[index].valor}`, `para ${num}`);
+	    else
+		vetor_operacoes.push(`Adicionado ${num}!`);
 	    
 	    heap_temp [index].valor = +num;
 
@@ -227,7 +223,7 @@ export default class ArrayProvider extends React.Component
 									 id: this.state.bin_heap.length}]));
 					      })() || this.state.bin_heap
 			       };
-			   },  this.props.mensageiro ([`Inserido ${numero_inserir}`]));
+			   });
 	};
 
     // mini-gambiarra no aumentar valor, que se aproveita
@@ -235,7 +231,7 @@ export default class ArrayProvider extends React.Component
     // primeiro insira um index e depois o valor
     aumentarValor = (valor) =>
 	{
-
+	    
 	    if (this.state.index_escolhido)
 	    {
 		let conj_valores = {
@@ -256,7 +252,7 @@ export default class ArrayProvider extends React.Component
 				   };
 			       });
 	    }
-	    else if (valor >= this.state.bin_heap.length)
+	    else if (valor >= this.state.bin_heap.length || isNaN (+valor))
 	    {
 		this.props.mensageiro (["Índice inválido"]);
 	    }
@@ -266,6 +262,7 @@ export default class ArrayProvider extends React.Component
 		    index_escolhido: valor,
 		},  this.props.mensageiro ([`Índice escolhido: ${valor}`]));
 	    }
+
 	}
     
     render ()
