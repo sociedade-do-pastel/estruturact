@@ -57,6 +57,10 @@ export default class HashScreen extends React.Component {
 	Adiciona(){
 		let linhaNova=[];
 		let elemento=this.state.numero;
+		if (isNaN(elemento) || elemento==null){
+			alert("A chave digitada deve ser um número inteiro.")
+			return
+		}
 		if(elemento!=0){
 			elemento=parseInt(elemento)
 		}
@@ -123,6 +127,10 @@ export default class HashScreen extends React.Component {
 	
 	Remove(){
 		let numeroAremover=this.state.numero;
+		if (isNaN(numeroAremover) || numeroAremover==null){
+			alert("A chave digitada deve ser um número inteiro.")
+			return
+		}
 		let alturaTabela=this.state.DataTable.length;
 		let tabelaCompleta=this.state.DataTable;
 		let comprimentoTabela=this.state.DataTable[0].length;
@@ -166,6 +174,10 @@ export default class HashScreen extends React.Component {
 	
 	Busca(){
 		let numeroBuscar=this.state.numero;
+		if (isNaN(numeroBuscar) || numeroBuscar==null){
+			alert("A chave digitada deve ser um número inteiro.")
+			return
+		}
 		let alturaTabela=this.state.DataTable.length;
 		let tabelaCompleta=this.state.DataTable;
 		let comprimentoTabela=this.state.DataTable[0].length;

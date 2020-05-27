@@ -58,7 +58,7 @@ export default class HashTutorialScreen extends React.Component {
 		  </Paragraph>
 		  <SubCard>
 		<Text style={{marginBottom: 10}}>
-		  1 - Novo: Clicar em novo para a criação de uma nova Tabela Hash</Text>
+		  1 - Novo: Clicar em novo para a criação de uma nova Tabela Hash.</Text>
 		<Text style={{marginBottom: 10}}>
 		  2 - Tamanho: Preencher a caixa de Diálogo com o tamanho da nova Tabela Hash (número de posições da tabela).
 		</Text>
