@@ -15,7 +15,7 @@ export default class SimulationView extends React.Component {
 		this.animate = this.animate.bind(this);
 	}
 
-	animate(textToAnimate){
+	animate(textToAnimate, callbackFunction=undefined){
 		this.setState({acceptingInput: false});
 		
 		for(let x=0; x<textToAnimate.length; x++)
@@ -35,7 +35,12 @@ export default class SimulationView extends React.Component {
 		setTimeout(()=>{
 			this.setState({operationQueue: [{id: 0, text: 'Aguardando operação'}], acceptingInput: true});
 		}, (animationInterval*y)+500);
-		
+
+		if(callbackFunction !== undefined){
+			setTimeout(()=>{
+				callbackFunction();
+			}, (animationInterval*y)+510);
+		}
 	}
 
 	executeOp(){

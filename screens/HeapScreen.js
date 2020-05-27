@@ -15,16 +15,21 @@ import ArvoreHeap from  '../structures/heap/arvre.js';
 
 export default class HeapScreen extends React.Component {
     constructor(props){
-	super(props);
-	this.state = {
-	    buttonName: 'Construir Heap',
-	    id_tela   : 0,
-	};
+		super(props);
+		this.state = {
+		isButtonDisabled : false,
+	    buttonName       : 'Construir Heap',
+	    id_tela          : 0,
+		};
+
+		
     }
     
     mensageiro = (mensagem) =>
 	{
-	    this.viewRef.animate (mensagem);
+	    this.setState({isButtonDisabled: true},
+					  () => this.viewRef.animate (mensagem,
+												  ()=>this.setState({isButtonDisabled: false})));
 	}
     
     render(){
@@ -51,7 +56,8 @@ export default class HeapScreen extends React.Component {
 				     <Listinha lista={tela_heap.vetor_apresentado}></Listinha>
 				   </View>
 					       <Text
-						     style={Style.preHeapButton}
+				             style={Style.preHeapButton}
+				             disabled={this.state.isButtonDisabled}
 						     onPress={
 							 () =>
 							      this.state.buttonName === 'Construir Heap'
